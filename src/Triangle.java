@@ -18,14 +18,6 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public String toString() {
-        return "Description of the figure: \n"
-                + "1. Name: " + getName() + "\n"
-                + "2. Area: " + getArea() + "\n"
-                + "3. Color: " + color.getName().toLowerCase() + "\n";
-    }
-
-    @Override
     public String getName() {
         return "triangle";
     }

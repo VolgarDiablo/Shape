@@ -8,10 +8,6 @@ public class Circle extends Shape {
         this.color = ColorFactory.getColor(colorName);
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     @Override
     public String getDescription() {
         return "Description of the figure: \n"

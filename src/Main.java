@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        ShapePrinterName printer = new ShapePrinterName();
 
         Shape square = new Square(5.3, "Blue");
         Shape rectangle = new Rectangle(23.4, 84.3, "Green");
@@ -19,6 +20,10 @@ public class Main {
 
         for (Shape elem : shapeList) {
             System.out.println(elem.getDescription());
+        }
+
+        for (Shape elem : shapeList) {
+            printer.printShapeName(elem);
         }
     }
 }
