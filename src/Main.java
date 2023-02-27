@@ -19,11 +19,14 @@ public class Main {
         shapeList.add(circle);
 
         for (Shape elem : shapeList) {
-            System.out.println(elem.getDescription());
+            printer.printShapeName(elem);
         }
 
         for (Shape elem : shapeList) {
-            printer.printShapeName(elem);
+            System.out.println(elem.getDescription());
+        }
+        for (Shape elem : shapeList) {
+            System.out.println(elem.getName());
         }
     }
 }
