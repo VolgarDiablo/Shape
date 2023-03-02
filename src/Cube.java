@@ -1,6 +1,7 @@
+import java.util.Objects;
+
 public class Cube extends Shape {
-    public double width;
-    public Color color;
+    private double width;
 
     public Cube(double width, String colorName) {
         this.width = width;
@@ -16,6 +17,26 @@ public class Cube extends Shape {
     }
 
     @Override
+    public Cube clone() throws CloneNotSupportedException {
+        Cube cube = (Cube) super.clone();
+        cube.color = ColorFactory.getColor(cube.getColor().getName());
+        return cube;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cube cube)) return false;
+        return Double.compare(cube.width, width) == 0
+                && color.equals(cube.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(width, color);
+    }
+
+    @Override
     public String getName() {
         return "cube";
     }
@@ -23,5 +44,13 @@ public class Cube extends Shape {
     @Override
     public double getArea() {
         return 6 * width * width;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 }

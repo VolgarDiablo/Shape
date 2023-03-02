@@ -1,7 +1,8 @@
+import java.util.Objects;
+
 public class Triangle extends Shape {
-    public double width;
-    public double height;
-    public Color color;
+    private double width;
+    private double height;
 
     public Triangle(double width, double height, String colorName) {
         this.width = width;
@@ -18,6 +19,27 @@ public class Triangle extends Shape {
     }
 
     @Override
+    public Triangle clone() throws CloneNotSupportedException {
+        Triangle triangle = (Triangle) super.clone();
+        triangle.color = ColorFactory.getColor(triangle.getColor().getName());
+        return triangle;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Triangle triangle)) return false;
+        return Double.compare(triangle.width, width) == 0
+                && Double.compare(triangle.height, height) == 0
+                && color.equals(triangle.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(width, height, color);
+    }
+
+    @Override
     public String getName() {
         return "triangle";
     }
@@ -25,5 +47,21 @@ public class Triangle extends Shape {
     @Override
     public double getArea() {
         return width * height / 2.0;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 }

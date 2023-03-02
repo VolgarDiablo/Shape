@@ -1,12 +1,19 @@
-public abstract class Shape implements Cloneable{
+public abstract class Shape implements Cloneable {
+    protected Color color;
+
     public abstract String getDescription();
 
     public abstract String getName();
 
     public abstract double getArea();
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    //new
+    public Color getColor() {
+        return color;
     }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    //
 }

@@ -1,6 +1,7 @@
-public class Square extends Shape{
-    public double width;
-    public Color color;
+import java.util.Objects;
+
+public class Square extends Shape {
+    private double width;
 
     public Square(double width, String colorName) {
         this.width = width;
@@ -16,6 +17,26 @@ public class Square extends Shape{
     }
 
     @Override
+    public Square clone() throws CloneNotSupportedException {
+        Square square = (Square) super.clone();
+        square.color = ColorFactory.getColor(square.getColor().getName());
+        return square;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Square square)) return false;
+        return Double.compare(square.width, width) == 0
+                && color.equals(square.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(width, color);
+    }
+
+    @Override
     public String getName() {
         return "square";
     }
@@ -23,5 +44,13 @@ public class Square extends Shape{
     @Override
     public double getArea() {
         return width * width;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
     }
 }

@@ -1,5 +1,5 @@
 public class Color {
-    public String name;
+    private final String name;
 
     public Color(String name) {
         this.name = name;
